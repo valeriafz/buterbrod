@@ -1,0 +1,196 @@
+[
+  {
+    "id": "CHIFLĂ",
+    "name": "CHIFLĂ BRIOCHE",
+    "price": 8,
+    "img": "/tomato/asset-1.svg",
+    "mass": 60
+  },
+  {
+    "id": "CARNE",
+    "type": [
+      {
+        "name": "FILEU PUI GRILL",
+        "price": 25,
+        "img": "/tomato/pirjoala-de-pui.svg",
+        "mass": 100
+      },
+      {
+        "name": "PÂRJOALĂ VITĂ",
+        "price": 35,
+        "img": "/tomato/pirjoala-de-vita.svg",
+        "mass": 150
+      },
+      {
+        "name": "FILEU PUI PANE",
+        "price": 25,
+        "img": "/tomato/pirjoala-de-pui.svg",
+        "mass": 100
+      }
+    ]
+  },
+  {
+    "id": "SOS CHIFLĂ JOS",
+    "type": [
+      {
+        "name": "SOS USTUROI",
+        "price": 4,
+        "img": "/tomato/tartar-sos.svg",
+        "mass": 20
+      },
+      {
+        "name": "SOS KETCHUP",
+        "price": 4,
+        "img": "/tomato/ketchup.svg",
+        "mass": 20
+      },
+      {
+        "name": "SOS TARTAR",
+        "price": 4,
+        "img": "/tomato/tartar-sos.svg",
+        "mass": 30
+      },
+      {
+        "name": "SOS MAIONEZĂ",
+        "price": 4,
+        "img": "/tomato/maioneza.svg",
+        "mass": 20
+      },
+      {
+        "name": "SOS USTUROI & BBQ",
+        "price": 4,
+        "img": "/tomato/ketchup.svg",
+        "mass": 20
+      },
+      {
+        "name": "SOS SIRACHA",
+        "price": 6,
+        "img": "/tomato/sriracha.svg",
+        "mass": 20
+      },
+      {
+        "name": "SOS CLASSY",
+        "price": "4 lei",
+        "img": "/tomato/ketchup.svg",
+        "mass": 20
+      }
+    ]
+  },
+  {
+    "id": "SOS CHIFLĂ TOP",
+    "type": [
+      {
+        "name": "SOS USTUROI",
+        "price": 4,
+        "img": "/tomato/tartar-sos.svg",
+        "mass": 20
+      },
+      {
+        "name": "SOS KETCHUP",
+        "price": 4,
+        "img": "/tomato/ketchup.svg",
+        "mass": 20
+      },
+      {
+        "name": "SOS TARTAR",
+        "price": 4,
+        "img": "/tomato/tartar-sos.svg",
+        "mass": 30
+      },
+      {
+        "name": "SOS MAIONEZĂ",
+        "price": 4,
+        "img": "/tomato/maioneza.svg",
+        "mass": 20
+      },
+      {
+        "name": "SOS USTUROI & BBQ",
+        "price": 4,
+        "img": "/tomato/ketchup.svg",
+        "mass": 20
+      },
+      {
+        "name": "SOS SIRACHA",
+        "price": 6,
+        "img": "/tomato/sriracha.svg",
+        "mass": 20
+      },
+      {
+        "name": "SOS CLASSY",
+        "price": "4 lei",
+        "img": "/tomato/ketchup.svg",
+        "mass": 20
+      }
+    ]
+  },
+  {
+    "id": "CAȘCAVAL",
+    "type": [
+      {
+        "name": "CAȘCAVAL CHEDDAR",
+        "price": 12,
+        "img": "/tomato/cheddar.svg",
+        "mass": 20
+      },
+      {
+        "name": "CAȘCAVAL DORBLU",
+        "price": 15,
+        "img": "/tomato/1238688899_cascaval-dorblu.svg",
+        "mass": 25
+      }
+    ]
+  },
+  {
+    "id": "TOPPING",
+    "type": [
+      {
+        "name": "BACON CROCANT",
+        "price": 12,
+        "img": "/tomato/bacon-crocant.svg",
+        "mass": 10
+      },
+      {
+        "name": "OU PRĂJIT",
+        "price": 10,
+        "img": "/tomato/ou-prajit.svg",
+        "mass": 40
+      },
+      {
+        "name": "CEAPĂ MARINATĂ",
+        "price": 2,
+        "img": "/tomato/ceapa-marinata.svg",
+        "mass": 10
+      },
+      {
+        "name": "CEAPĂ CARAMELIZATĂ",
+        "price": 4,
+        "img": "/tomato/ceapa-caramelizata.svg",
+        "mass": 20
+      },
+      {
+        "name": "CASTRAVEȚI MURAȚI",
+        "price": 4,
+        "img": "/tomato/1186812026_castraveti-murati.svg",
+        "mass": 30
+      },
+      {
+        "name": "CASTRAVEȚI PROASPEȚI",
+        "price": 4,
+        "img": "/tomato/castraveti-proaspeti.svg",
+        "mass": 20
+      },
+      {
+        "name": "SALATĂ ICEBERG",
+        "price": 5,
+        "img": "/tomato/salata-iceberg.svg",
+        "mass": 15
+      },
+      {
+        "name": "ROȘII",
+        "price": 5,
+        "img": "/tomato/rosii.svg",
+        "mass": 40
+      }
+    ]
+  }
+]

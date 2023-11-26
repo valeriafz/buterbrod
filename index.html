@@ -53,9 +53,9 @@
           <img src="/tomato/header/icons8-instagram.svg" alt="" />
         </div>
         <div class="lang-header">
-          <a class="active" href="/ro/craft-burger"> ro </a>
-          <a href="/ru/craft-burger"> ru </a>
-          <a href="/en/craft-burger"> en </a>
+          <a class="active ro" href="index.html"> ro </a>
+          <a href="/ru/craft-burger" class="ru"> ru </a>
+          <a href="/en/craft-burger" class="en"> en </a>
         </div>
       </div>
     </div>
@@ -69,17 +69,13 @@
         <div class="burger-select">
           <div class="label">1. CHIFLA</div>
           <div class="select">
-            <select name="chifla" id="" class="select-val">
-              <option value="">chifla (8 lei)</option>
-            </select>
+            <select name="chifla" id="chifla" class="select-val"></select>
           </div>
         </div>
         <div class="burger-select">
           <div class="label">2. CARNE</div>
           <div class="select">
-            <select name="chifla" id="" class="select-val">
-              <option value="">pârjoală vită (35 lei)</option>
-            </select>
+            <select name="chifla" id="carne" class="select-val"></select>
           </div>
           <div class="add-item clone-item">
             <span class="plus-icon"></span>
@@ -89,9 +85,11 @@
         <div class="burger-select">
           <div class="label">3. SOS CHIFLA JOS</div>
           <div class="select">
-            <select name="chifla" id="" class="select-val">
-              <option value="">-</option>
-            </select>
+            <select
+              name="chifla"
+              id="sos-chifla-jos"
+              class="select-val"
+            ></select>
           </div>
           <div class="add-item clone-item">
             <span class="plus-icon"></span>
@@ -101,9 +99,11 @@
         <div class="burger-select">
           <div class="label">4. SOS CHIFLA TOP</div>
           <div class="select">
-            <select name="chifla" id="" class="select-val">
-              <option value="">-</option>
-            </select>
+            <select
+              name="chifla"
+              id="sos-chifla-top"
+              class="select-val"
+            ></select>
           </div>
           <div class="add-item clone-item">
             <span class="plus-icon"></span>
@@ -113,9 +113,7 @@
         <div class="burger-select">
           <div class="label">5. CASCAVAL</div>
           <div class="select">
-            <select name="chifla" id="" class="select-val">
-              <option value="">-</option>
-            </select>
+            <select name="chifla" id="cascaval" class="select-val"></select>
           </div>
           <div class="add-item clone-item">
             <span class="plus-icon"></span>
@@ -125,9 +123,7 @@
         <div class="burger-select">
           <div class="label">6. TOPPING</div>
           <div class="select">
-            <select name="chifla" id="" class="select-val">
-              <option value="">-</option>
-            </select>
+            <select name="chifla" id="topping" class="select-val"></select>
           </div>
           <div class="add-item clone-item">
             <span class="plus-icon"></span>
@@ -144,24 +140,22 @@
         </div>
         <hr class="totals-del" />
         <div class="burger-total">
-          <div class="result-row chifla" data-option="3">
+          <div class="result-row chifla">
             <span class="label">CHIFLA BRIOCHE : </span>
             <span class="value">8 lei</span>
-            <span class="mass"> (60 gr)</span>
+            <span class="mass">(60 gr)</span>
           </div>
-          <div class="result-row carne" data-option="4">
+
+          <div class="result-row carne">
             <span class="label">PÂRJOALĂ VITĂ : </span>
             <span class="value">35 lei</span>
-            <span class="mass"> (150 gr)</span>
+            <span class="mass">(150 gr)</span>
           </div>
+
           <div class="total-price-row">
             <span class="label">Total : </span>
-            <span class="value"> <span class="total-price">43</span> lei </span>
-            <span class="mass">
-              <span class="total-mass-sign"> (</span>
-              <span class="total-mass">210</span>
-              <span class="total-mass-sign">gr)</span>
-            </span>
+            <span class="value"> <span class="total-price"></span> lei </span>
+            <span class="mass"> (<span class="total-mass"></span>gr) </span>
           </div>
         </div>
         <div class="burger-button">
@@ -206,5 +200,6 @@
         <img src="/tomato/header/icons8-instagram.svg" alt="" />
       </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
