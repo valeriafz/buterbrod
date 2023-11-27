@@ -149,7 +149,7 @@ window.addEventListener("load", () => {
 
 let scrolled = false;
 
-function scrollToBurger() {
+const scrollToBurger = () => {
   const burgerSection = document.querySelector(".burger");
 
   if (burgerSection) {
@@ -158,9 +158,9 @@ function scrollToBurger() {
       behavior: "smooth",
     });
   }
-}
+};
 
-window.addEventListener("scroll", function () {
+window.addEventListener("scroll", () => {
   const burger = document.querySelector(".burger");
   const header = document.querySelector(".navbar");
 
