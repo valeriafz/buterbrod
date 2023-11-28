@@ -105,24 +105,46 @@ a {
 }
 
 .navbar-lang {
-  display: table;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   height: 133px;
 }
 
 .social-header {
   margin-top: 25px;
-  display: block;
-  text-align: right;
-  margin-right: 50px;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.social-header img {
+.nav-img-inst {
   width: 20px;
   height: 20px;
+  display: inline-block;
+  cursor: pointer;
+  background-image: url(/tomato/header/icons8-instagram.svg);
+  background-size: cover;
+  margin-right: 10px;
+  transition: background-image 0.3s;
 }
 
-.social-header img:hover {
-  color: gray;
+.nav-img-inst:hover {
+  background-image: url(/tomato/header/icons8-instagram-50-yellow.png);
+}
+
+.nav-img-face:hover {
+  background-image: url(/tomato/header/icons8-facebook-yellow.svg);
+}
+
+.nav-img-face {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  cursor: pointer;
+  background-image: url(/tomato/header/icons8-facebook.svg);
+  background-size: cover;
+  margin-right: 10px;
+  transition: background-image 0.3s;
 }
 
 .lang-header {
@@ -207,8 +229,14 @@ a {
   height: 45px;
   font-weight: 500;
   cursor: pointer;
-  padding: 0 35px 0 20px;
+  padding: 0 30px 0 20px;
   text-transform: uppercase;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url("/tomato/select/icons8-down-50.png") no-repeat right bottom;
+  background-size: 15px;
+  background-position: 235px;
 }
 
 .add-item {
@@ -339,6 +367,7 @@ hr {
   padding: 0 10px;
   border: none;
   position: relative;
+  cursor: pointer;
 }
 
 .buton-doi {
@@ -356,6 +385,7 @@ hr {
   padding: 0 10px;
   border: none;
   border-radius: 0;
+  cursor: pointer;
 }
 
 .totals-del {
@@ -477,8 +507,34 @@ button:focus {
   padding-right: 200px;
 }
 
-.footer-media img {
-  width: 30px;
+.footer-img-face {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  cursor: pointer;
+  background-image: url(/tomato/header/icons8-facebook.svg);
+  background-size: cover;
+  margin-right: 10px;
+  transition: background-image 0.3s;
+}
+
+.footer-img-face:hover {
+  background-image: url(/tomato/header/icons8-facebook-yellow.svg);
+}
+
+.footer-img-inst {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  cursor: pointer;
+  background-image: url(/tomato/header/icons8-instagram.svg);
+  background-size: cover;
+  margin-right: 10px;
+  transition: background-image 0.3s;
+}
+
+.footer-img-inst:hover {
+  background-image: url(/tomato/header/icons8-instagram-50-yellow.png);
 }
 
 /* .ingredient:hover {
@@ -554,4 +610,30 @@ button:focus {
   height: 38px;
   display: block;
   margin: auto;
+}
+
+.del-item {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 20px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  background: url(/tomato/select/icons8-cross-50.png) no-repeat center;
+  background-size: 24px;
+  transition: transform 0.3s;
+}
+
+.del-item:hover {
+  transform: scale(1.2);
+}
+
+.plus-icon {
+  background: url(/tomato/select/icons8-plus-50.png) no-repeat center;
+  background-size: 25px;
+  transition: transform 0.3s;
+}
+
+.add-item:hover .plus-icon {
+  transform: rotate(90deg);
 }
