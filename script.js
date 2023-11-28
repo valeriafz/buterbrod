@@ -5,6 +5,53 @@ const addItemButtons = document.querySelectorAll(".add-item.clone-item");
 const cloneContainers = document.querySelectorAll(".clone-container");
 const selectedItems = document.querySelectorAll(".burger-select select");
 const nameBurger = document.querySelector(".personal-name");
+const total = document.querySelector(".total-price-row");
+
+//scroll :((
+
+let scrolled = false;
+
+function scrollToBurger() {
+  const burgerSection = document.querySelector(".burger");
+
+  if (burgerSection) {
+    window.scrollTo({
+      top: burgerSection.offsetTop - 130,
+      behavior: "smooth",
+    });
+  }
+}
+
+window.addEventListener("scroll", function () {
+  const burger = document.querySelector(".burger");
+  const header = document.querySelector(".navbar");
+
+  if (!scrolled && burger) {
+    window.scrollTo({
+      top: burger.offsetTop - 130,
+      behavior: "smooth",
+    });
+
+    scrolled = true;
+    header.classList.add("header");
+  } else if (window.scrollY === 0) {
+    scrolled = false;
+    header.classList.remove("header");
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowDown") {
+    scrollToBurger();
+  }
+});
+
+const arrow = document.querySelector(".scroll-down");
+
+arrow.addEventListener("click", () => {
+  console.log("Click event triggered!");
+  scrollToBurger();
+});
 
 const updateTotals = () => {
   let totalPrice = 0;
@@ -12,7 +59,7 @@ const updateTotals = () => {
 
   totalContainer.innerHTML = "";
 
-  selectedItems.forEach((select) => {
+  document.querySelectorAll(".burger-select select").forEach((select) => {
     if (select.selectedIndex === 0) return; // sar peste default "-"
 
     const selectedOption = select.options[select.selectedIndex];
@@ -92,13 +139,25 @@ const cloneSelectOptions = (originalSelectContainer) => {
   );
 };
 
-addToCart.addEventListener("click", () => {
-  const selectedChoices = [];
+const postData = async (url, data) => {
+  let response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  return await response.json();
+};
 
-  selectedItems.forEach((select) => {
+addToCart.addEventListener("click", async (e) => {
+  e.preventDefault();
+
+  const selectedChoices = [];
+  document.querySelectorAll(".burger-select select").forEach((select) => {
     const selectedOption = select.options[select.selectedIndex];
 
-    if (selectedOption.value !== "") {
+    if (selectedOption.value !== "-") {
       const choice = {
         name: selectedOption.text.split(" (")[0],
         price: parseFloat(selectedOption.dataset.price),
@@ -107,13 +166,17 @@ addToCart.addEventListener("click", () => {
       selectedChoices.push(choice);
     }
   });
-  console.log(selectedChoices);
-  console.log(`Name burger: ${nameBurger.value}`);
+
+  const burgerData = {
+    choices: selectedChoices,
+    burgerName: nameBurger.value,
+    total: parseFloat(document.querySelector(".total-price").textContent),
+  };
+
+  await postData("http://localhost:3000/orders", burgerData);
 });
 
 emptyBasket.addEventListener("click", () => {
-  totalContainer.innerHTML = "";
-
   cloneContainers.forEach((cloneContainer) => {
     cloneContainer.remove();
   });
@@ -123,6 +186,7 @@ emptyBasket.addEventListener("click", () => {
   });
 
   nameBurger.value = "";
+  updateTotals();
 });
 
 window.addEventListener("load", () => {
@@ -143,50 +207,4 @@ window.addEventListener("load", () => {
       cloneSelectOptions(originalSelectContainer);
     });
   });
-});
-
-//scroll :((
-
-let scrolled = false;
-
-const scrollToBurger = () => {
-  const burgerSection = document.querySelector(".burger");
-
-  if (burgerSection) {
-    window.scrollTo({
-      top: burgerSection.offsetTop - 130,
-      behavior: "smooth",
-    });
-  }
-};
-
-window.addEventListener("scroll", () => {
-  const burger = document.querySelector(".burger");
-  const header = document.querySelector(".navbar");
-
-  if (!scrolled && burger) {
-    window.scrollTo({
-      top: burger.offsetTop - 130,
-      behavior: "smooth",
-    });
-
-    scrolled = true;
-    header.classList.add("header");
-  } else if (window.scrollY === 0) {
-    scrolled = false;
-    header.classList.remove("header");
-  }
-});
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "ArrowDown") {
-    scrollToBurger();
-  }
-});
-
-const arrow = document.querySelector(".scroll-down");
-
-arrow.addEventListener("click", () => {
-  console.log("Click event triggered!");
-  scrollToBurger();
 });

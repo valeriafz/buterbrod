@@ -1,0 +1,223 @@
+{
+  "orders": [
+    {
+      "choices": [
+        {
+          "name": "CHIFLĂ BRIOCHE",
+          "price": 8,
+          "mass": 60
+        },
+        {
+          "name": "FILEU PUI GRILL",
+          "price": 25,
+          "mass": 100
+        },
+        {
+          "name": "CAȘCAVAL DORBLU",
+          "price": 15,
+          "mass": 25
+        }
+      ],
+      "burgerName": "mmmmm",
+      "id": 1
+    },
+    {
+      "choices": [
+        {
+          "name": "CHIFLĂ BRIOCHE",
+          "price": 8,
+          "mass": 60
+        },
+        {
+          "name": "FILEU PUI GRILL",
+          "price": 25,
+          "mass": 100
+        },
+        {
+          "name": "CEAPĂ MARINATĂ",
+          "price": 2,
+          "mass": 10
+        }
+      ],
+      "burgerName": "",
+      "id": 2
+    },
+    {
+      "choices": [
+        {
+          "name": "CHIFLĂ BRIOCHE",
+          "price": 8,
+          "mass": 60
+        },
+        {
+          "name": "FILEU PUI GRILL",
+          "price": 25,
+          "mass": 100
+        },
+        {
+          "name": "SOS TARTAR",
+          "price": 4,
+          "mass": 30
+        },
+        {
+          "name": "SOS MAIONEZĂ",
+          "price": 4,
+          "mass": 20
+        },
+        {
+          "name": "CAȘCAVAL DORBLU",
+          "price": 15,
+          "mass": 25
+        },
+        {
+          "name": "CEAPĂ CARAMELIZATĂ",
+          "price": 4,
+          "mass": 20
+        }
+      ],
+      "burgerName": "",
+      "id": 3
+    },
+    {
+      "choices": [
+        {
+          "name": "CHIFLĂ BRIOCHE",
+          "price": 8,
+          "mass": 60
+        },
+        {
+          "name": "PÂRJOALĂ VITĂ",
+          "price": 35,
+          "mass": 150
+        },
+        {
+          "name": "SOS USTUROI",
+          "price": 4,
+          "mass": 20
+        },
+        {
+          "name": "SOS MAIONEZĂ",
+          "price": 4,
+          "mass": 20
+        },
+        {
+          "name": "CAȘCAVAL CHEDDAR",
+          "price": 12,
+          "mass": 20
+        },
+        {
+          "name": "CEAPĂ CARAMELIZATĂ",
+          "price": 4,
+          "mass": 20
+        }
+      ],
+      "burgerName": "Burger",
+      "total": null,
+      "id": 4
+    },
+    {
+      "choices": [
+        {
+          "name": "-",
+          "price": null,
+          "mass": null
+        },
+        {
+          "name": "-",
+          "price": null,
+          "mass": null
+        },
+        {
+          "name": "-",
+          "price": null,
+          "mass": null
+        },
+        {
+          "name": "-",
+          "price": null,
+          "mass": null
+        },
+        {
+          "name": "-",
+          "price": null,
+          "mass": null
+        },
+        {
+          "name": "CEAPĂ CARAMELIZATĂ",
+          "price": 4,
+          "mass": 20
+        }
+      ],
+      "burgerName": "",
+      "total": 4,
+      "id": 5
+    },
+    {
+      "choices": [
+        {
+          "name": "-",
+          "price": null,
+          "mass": null
+        },
+        {
+          "name": "-",
+          "price": null,
+          "mass": null
+        },
+        {
+          "name": "-",
+          "price": null,
+          "mass": null
+        },
+        {
+          "name": "SOS TARTAR",
+          "price": 4,
+          "mass": 30
+        },
+        {
+          "name": "CAȘCAVAL DORBLU",
+          "price": 15,
+          "mass": 25
+        },
+        {
+          "name": "-",
+          "price": null,
+          "mass": null
+        }
+      ],
+      "burgerName": "",
+      "total": 19,
+      "id": 6
+    },
+    {
+      "choices": [
+        {
+          "name": "OU PRĂJIT",
+          "price": 10,
+          "mass": 40
+        }
+      ],
+      "burgerName": "",
+      "total": 10,
+      "id": 7
+    },
+    {
+      "choices": [],
+      "burgerName": "",
+      "total": 5,
+      "id": 8
+    },
+    {
+      "choices": [
+        {
+          "name": "ROȘII",
+          "price": 5,
+          "mass": 40
+        }
+      ],
+      "burgerName": "",
+      "total": 5,
+      "id": 9
+    }
+  ]
+}
