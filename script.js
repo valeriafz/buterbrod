@@ -7,6 +7,52 @@ const selectedItems = document.querySelectorAll(".burger-select select");
 const nameBurger = document.querySelector(".personal-name");
 const total = document.querySelector(".total-price-row");
 
+//scroll :((
+
+let scrolled = false;
+
+function scrollToBurger() {
+  const burgerSection = document.querySelector(".burger");
+
+  if (burgerSection) {
+    window.scrollTo({
+      top: burgerSection.offsetTop - 130,
+      behavior: "smooth",
+    });
+  }
+}
+
+window.addEventListener("scroll", function () {
+  const burger = document.querySelector(".burger");
+  const header = document.querySelector(".navbar");
+
+  if (!scrolled && burger) {
+    window.scrollTo({
+      top: burger.offsetTop - 130,
+      behavior: "smooth",
+    });
+
+    scrolled = true;
+    header.classList.add("header");
+  } else if (window.scrollY === 0) {
+    scrolled = false;
+    header.classList.remove("header");
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowDown") {
+    scrollToBurger();
+  }
+});
+
+const arrow = document.querySelector(".scroll-down");
+
+arrow.addEventListener("click", () => {
+  console.log("Click event triggered!");
+  scrollToBurger();
+});
+
 const updateTotals = () => {
   let totalPrice = 0;
   let totalMass = 0;
