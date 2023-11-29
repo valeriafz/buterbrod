@@ -216,3 +216,122 @@ window.addEventListener("load", () => {
     });
   });
 });
+
+
+const fetchData = () => {
+  return fetch("/data/menu.json")
+    .then(response => response.json())
+    .then(data => data);
+};
+
+const ingrediente = [];
+let left = true;
+
+const deleteIngredient = (index) => {
+  const removedIngredient = ingrediente.splice(index, 1);
+};
+
+const displaySelectedRow = (index, selectedItemIndex, data) => {
+  const burgerMakeContainer = document.querySelector('.burger-make');
+  const existingRow = document.querySelector(`#row-${index}`);
+
+  if (index === 1 && selectedItemIndex !== 0) {
+    const carneDefaultElement = document.getElementById('carneDefault');
+    if (carneDefaultElement) {
+      carneDefaultElement.style.display = 'none';
+    }
+  }
+
+  if (selectedItemIndex === 0) {
+    deleteIngredient(index);
+
+    if (existingRow) {
+      burgerMakeContainer.removeChild(existingRow);
+    }
+    return;
+  }
+
+  const selectedItem = selectedItemIndex - 1;
+  const selectedOption = data[index].type[selectedItem];
+
+  if (existingRow) {
+    const imagine = existingRow.querySelector('.ingredient');
+    imagine.src = selectedOption.img;
+    imagine.classList.add('jello-on-appear');
+
+    const descriere = existingRow.querySelector('.image-description-left, .image-description-right');
+    descriere.innerHTML = selectedOption.name;
+  } else {
+    const row = document.createElement("div");
+    row.classList.add("burger-row");
+    row.id = `row-${index}`;
+
+    const descriere = document.createElement("span");
+    descriere.innerHTML = selectedOption.name;
+    descriere.classList.add(left ? "image-description-left" : "image-description-right");
+
+    const arrow = document.createElement("img");
+    arrow.src = left ? "/tomato/arrow-left.svg" : "/tomato/arrow-right.svg";
+    arrow.classList.add(left ? "arrow-left" : "arrow-right");
+
+    const imagine = document.createElement("img");
+    imagine.src = selectedOption.img;
+    imagine.classList.add("ingredient", 'jello-on-appear');
+
+    if (left) {
+      row.appendChild(imagine);
+      row.appendChild(arrow);
+      row.appendChild(descriere);
+    } else {
+      row.appendChild(descriere);
+      row.appendChild(arrow);
+      row.appendChild(imagine);
+    }
+
+    burgerMakeContainer.insertBefore(row, last);
+  }
+
+  ingrediente[index] = selectedOption.name;
+  left = !left;
+
+};
+
+
+
+const updateIngredient = (select, index, data) => {
+  select.addEventListener('change', () => {
+    const selectedItemIndex = select.selectedIndex;
+
+    fetchData().then(data => {
+      const selectedOption = selectedItemIndex === 0 ? null : data[index].type[selectedItemIndex - 1];
+
+      const sameSelectIndex = ingrediente.findIndex((ingredient, i) => i !== index && ingredient === selectedOption?.name);
+
+      if (sameSelectIndex !== -1) {
+        ingrediente.splice(sameSelectIndex, 1);
+      }
+
+      if (selectedOption) {
+        ingrediente[index] = selectedOption.name;
+      } else {
+        ingrediente[index] = null;
+      }
+
+      displaySelectedRow(index, selectedItemIndex, data);
+    });
+  });
+};
+
+const selects = document.querySelectorAll('select');
+
+selects.forEach((select, index) => {
+  updateIngredient(select, index);
+});
+
+fetchData().then(data => {
+
+  selects.forEach((select, index) => {
+    displaySelectedRow(index, 0, data);
+  });
+});
+
