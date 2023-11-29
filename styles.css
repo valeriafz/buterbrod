@@ -537,7 +537,7 @@ button:focus {
   background-image: url(/tomato/header/icons8-instagram-50-yellow.png);
 }
 
-/* .ingredient:hover {
+.ingredient.jello-on-appear {
   animation: jello 1s;
 } 
 
@@ -568,7 +568,7 @@ button:focus {
   88% {
     transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
   }
-} */
+}
 
 .header {
   height: 130px;
