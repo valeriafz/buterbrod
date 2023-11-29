@@ -7,50 +7,6 @@ const selectedItems = document.querySelectorAll(".burger-select select");
 const nameBurger = document.querySelector(".personal-name");
 const total = document.querySelector(".total-price-row");
 
-let scrolled = false;
-
-const scrollToBurger = () => {
-  const burgerSection = document.querySelector(".burger");
-
-  if (burgerSection) {
-    window.scrollTo({
-      top: burgerSection.offsetTop - 130,
-      behavior: "smooth",
-    });
-  }
-};
-
-window.addEventListener("scroll", () => {
-  const burger = document.querySelector(".burger");
-  const header = document.querySelector(".navbar");
-
-  if (!scrolled && burger) {
-    window.scrollTo({
-      top: burger.offsetTop - 130,
-      behavior: "smooth",
-    });
-
-    scrolled = true;
-    header.classList.add("header");
-  } else if (window.scrollY === 0) {
-    scrolled = false;
-    header.classList.remove("header");
-  }
-});
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "ArrowDown") {
-    scrollToBurger();
-  }
-});
-
-const arrow = document.querySelector(".scroll-down");
-
-arrow.addEventListener("click", () => {
-  console.log("Click event triggered!");
-  scrollToBurger();
-});
-
 const updateTotals = () => {
   let totalPrice = 0;
   let totalMass = 0;
@@ -144,6 +100,7 @@ const cloneSelectOptions = (originalSelectContainer) => {
   deleteButton.addEventListener("click", () => {
     cloneContainer.remove();
     updateTotals();
+    setupSelects();
   });
 };
 
@@ -158,70 +115,18 @@ const postData = async (url, data) => {
   return await response.json();
 };
 
-addToCart.addEventListener("click", async (e) => {
-  e.preventDefault();
+const setupSelects = () => {
+  const selects = document.querySelectorAll(".burger-select select");
 
-  const selectedChoices = [];
-  document.querySelectorAll(".burger-select select").forEach((select) => {
-    const selectedOption = select.options[select.selectedIndex];
-
-    if (selectedOption.value !== "-") {
-      const choice = {
-        name: selectedOption.text.split(" (")[0],
-        price: parseFloat(selectedOption.dataset.price),
-        mass: parseFloat(selectedOption.dataset.mass),
-      };
-      selectedChoices.push(choice);
-    }
+  selects.forEach((select, index) => {
+    updateIngredient(select, index);
   });
-
-  const burgerData = {
-    choices: selectedChoices,
-    burgerName: nameBurger.value,
-    total: parseFloat(document.querySelector(".total-price").textContent),
-  };
-
-  await postData("http://localhost:3000/orders", burgerData);
-});
-
-emptyBasket.addEventListener("click", () => {
-  cloneContainers.forEach((cloneContainer) => {
-    cloneContainer.remove();
-  });
-
-  selectedItems.forEach((select) => {
-    select.selectedIndex = 0;
-  });
-
-  nameBurger.value = "";
-  updateTotals();
-});
-
-window.addEventListener("load", () => {
-  fetch("/data/menu.json")
-    .then((response) => response.json())
-    .then((data) => {
-      populateOptions("chifla", [data[0]]);
-      populateOptions("carne", data[1].type);
-      populateOptions("sos-chifla-jos", data[2].type);
-      populateOptions("sos-chifla-top", data[3].type);
-      populateOptions("cascaval", data[4].type);
-      populateOptions("topping", data[5].type);
-    });
-
-  addItemButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const originalSelectContainer = button.closest(".burger-select");
-      cloneSelectOptions(originalSelectContainer);
-    });
-  });
-});
-
+};
 
 const fetchData = () => {
   return fetch("/data/menu.json")
-    .then(response => response.json())
-    .then(data => data);
+    .then((response) => response.json())
+    .then((data) => data);
 };
 
 const ingrediente = [];
@@ -232,13 +137,14 @@ const deleteIngredient = (index) => {
 };
 
 const displaySelectedRow = (index, selectedItemIndex, data) => {
-  const burgerMakeContainer = document.querySelector('.burger-make');
+  const burgerMakeContainer = document.querySelector(".burger-make");
   const existingRow = document.querySelector(`#row-${index}`);
+  const rowId = `row-${index}`;
 
   if (index === 1 && selectedItemIndex !== 0) {
-    const carneDefaultElement = document.getElementById('carneDefault');
+    const carneDefaultElement = document.getElementById("carneDefault");
     if (carneDefaultElement) {
-      carneDefaultElement.style.display = 'none';
+      carneDefaultElement.style.display = "none";
     }
   }
 
@@ -255,20 +161,24 @@ const displaySelectedRow = (index, selectedItemIndex, data) => {
   const selectedOption = data[index].type[selectedItem];
 
   if (existingRow) {
-    const imagine = existingRow.querySelector('.ingredient');
+    const imagine = existingRow.querySelector(".ingredient");
     imagine.src = selectedOption.img;
-    imagine.classList.add('jello-on-appear');
+    imagine.classList.add("jello-on-appear");
 
-    const descriere = existingRow.querySelector('.image-description-left, .image-description-right');
+    const descriere = existingRow.querySelector(
+      ".image-description-left, .image-description-right"
+    );
     descriere.innerHTML = selectedOption.name;
   } else {
     const row = document.createElement("div");
     row.classList.add("burger-row");
-    row.id = `row-${index}`;
+    row.id = rowId;
 
     const descriere = document.createElement("span");
     descriere.innerHTML = selectedOption.name;
-    descriere.classList.add(left ? "image-description-left" : "image-description-right");
+    descriere.classList.add(
+      left ? "image-description-left" : "image-description-right"
+    );
 
     const arrow = document.createElement("img");
     arrow.src = left ? "/tomato/arrow-left.svg" : "/tomato/arrow-right.svg";
@@ -276,7 +186,7 @@ const displaySelectedRow = (index, selectedItemIndex, data) => {
 
     const imagine = document.createElement("img");
     imagine.src = selectedOption.img;
-    imagine.classList.add("ingredient", 'jello-on-appear');
+    imagine.classList.add("ingredient", "jello-on-appear");
 
     if (left) {
       row.appendChild(imagine);
@@ -293,19 +203,21 @@ const displaySelectedRow = (index, selectedItemIndex, data) => {
 
   ingrediente[index] = selectedOption.name;
   left = !left;
-
 };
 
-
-
-const updateIngredient = (select, index, data) => {
-  select.addEventListener('change', () => {
+const updateIngredient = (select, index) => {
+  select.addEventListener("change", () => {
     const selectedItemIndex = select.selectedIndex;
 
-    fetchData().then(data => {
-      const selectedOption = selectedItemIndex === 0 ? null : data[index].type[selectedItemIndex - 1];
+    fetchData().then((data) => {
+      const selectedOption =
+        selectedItemIndex === 0
+          ? null
+          : data[index].type[selectedItemIndex - 1];
 
-      const sameSelectIndex = ingrediente.findIndex((ingredient, i) => i !== index && ingredient === selectedOption?.name);
+      const sameSelectIndex = ingrediente.findIndex(
+        (ingredient, i) => i !== index && ingredient === selectedOption?.name
+      );
 
       if (sameSelectIndex !== -1) {
         ingrediente.splice(sameSelectIndex, 1);
@@ -322,16 +234,30 @@ const updateIngredient = (select, index, data) => {
   });
 };
 
-const selects = document.querySelectorAll('select');
+window.addEventListener("load", () => {
+  fetch("/data/menu.json")
+    .then((response) => response.json())
+    .then((data) => {
+      populateOptions("chifla", [data[0]]);
+      populateOptions("carne", data[1].type);
+      populateOptions("sos-chifla-jos", data[2].type);
+      populateOptions("sos-chifla-top", data[3].type);
+      populateOptions("cascaval", data[4].type);
+      populateOptions("topping", data[5].type);
+      setupSelects();
+    });
 
-selects.forEach((select, index) => {
-  updateIngredient(select, index);
+  addItemButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const originalSelectContainer = button.closest(".burger-select");
+      cloneSelectOptions(originalSelectContainer);
+      setupSelects();
+    });
+  });
 });
 
-fetchData().then(data => {
-
+fetchData().then((data) => {
   selects.forEach((select, index) => {
     displaySelectedRow(index, 0, data);
   });
 });
-
