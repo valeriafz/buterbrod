@@ -9,7 +9,7 @@ const total = document.querySelector(".total-price-row");
 
 let scrolled = false;
 
-function scrollToBurger() {
+const scrollToBurger = () => {
   const burgerSection = document.querySelector(".burger");
 
   if (burgerSection) {
@@ -18,9 +18,9 @@ function scrollToBurger() {
       behavior: "smooth",
     });
   }
-}
+};
 
-window.addEventListener("scroll", function () {
+window.addEventListener("scroll", () => {
   const burger = document.querySelector(".burger");
   const header = document.querySelector(".navbar");
 
@@ -121,21 +121,6 @@ const populateOptions = (selectId, options) => {
 
   select.addEventListener("change", updateTotals);
 };
-
-// const cloneSelectOptions = (originalSelectContainer) => {
-//   const originalSelect = originalSelectContainer.querySelector("select");
-//   const cloneContainer = document.createElement("div");
-//   cloneContainer.classList.add("burger-select", "clone-container");
-
-//   const cloneSelect = originalSelect.cloneNode(true);
-//   cloneSelect.addEventListener("change", updateTotals);
-//   cloneContainer.appendChild(cloneSelect);
-
-//   originalSelectContainer.parentNode.insertBefore(
-//     cloneContainer,
-//     originalSelectContainer.nextSibling
-//   );
-// };
 
 const cloneSelectOptions = (originalSelectContainer) => {
   const originalSelect = originalSelectContainer.querySelector("select");
