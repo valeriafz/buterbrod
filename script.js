@@ -7,8 +7,6 @@ const selectedItems = document.querySelectorAll(".burger-select select");
 const nameBurger = document.querySelector(".personal-name");
 const total = document.querySelector(".total-price-row");
 
-//scroll :((
-
 let scrolled = false;
 
 function scrollToBurger() {
@@ -124,6 +122,21 @@ const populateOptions = (selectId, options) => {
   select.addEventListener("change", updateTotals);
 };
 
+// const cloneSelectOptions = (originalSelectContainer) => {
+//   const originalSelect = originalSelectContainer.querySelector("select");
+//   const cloneContainer = document.createElement("div");
+//   cloneContainer.classList.add("burger-select", "clone-container");
+
+//   const cloneSelect = originalSelect.cloneNode(true);
+//   cloneSelect.addEventListener("change", updateTotals);
+//   cloneContainer.appendChild(cloneSelect);
+
+//   originalSelectContainer.parentNode.insertBefore(
+//     cloneContainer,
+//     originalSelectContainer.nextSibling
+//   );
+// };
+
 const cloneSelectOptions = (originalSelectContainer) => {
   const originalSelect = originalSelectContainer.querySelector("select");
   const cloneContainer = document.createElement("div");
@@ -133,10 +146,20 @@ const cloneSelectOptions = (originalSelectContainer) => {
   cloneSelect.addEventListener("change", updateTotals);
   cloneContainer.appendChild(cloneSelect);
 
+  const deleteButton = document.createElement("div");
+  deleteButton.classList.add("del-item");
+
+  cloneContainer.appendChild(deleteButton);
+
   originalSelectContainer.parentNode.insertBefore(
     cloneContainer,
     originalSelectContainer.nextSibling
   );
+
+  deleteButton.addEventListener("click", () => {
+    cloneContainer.remove();
+    updateTotals();
+  });
 };
 
 const postData = async (url, data) => {
